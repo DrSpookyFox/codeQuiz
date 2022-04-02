@@ -5,27 +5,31 @@ const controls = document.getElementById('controls')
 const questionElement = document.getElementById('questions')
 const answerButtonElement = document.getElementById('answer-buttons')
 let currentQuestionIndex = 0;
-let timerDisplay = document.getElementById('timerDisplay')
+const timerDisplay = document.getElementById('timerDisplay')
+var sec;
 
 // Click start button to start quiz
-startButton.addEventListener('click', startGame)
+startButton.addEventListener('click', startGame,)
 
 
 
 function startGame() {
     controls.classList.add('hide')
     questionContainerElement.classList.remove('hide')
+    startTimer()
 }
 
 // // Countdown timer starts
 function startTimer(){
-    var sec = 60;
+    sec = 60;
     var timer = setInterval(function(){
-        document.getElementById('TimerDisplay').innerHTML='00'+sec;
+        if (sec >= 0){
+            document.getElementById('timerDisplay').innerHTML=sec;
+        } else {document.getElementById('timerDisplay').innerHTML=0;}
+       
         sec--;
-        if (sec < 0) {
+        if (sec <= 0) {
             clearInterval(timer);
-            
         }
     }, 1000);
 }
@@ -74,15 +78,10 @@ function showQuestion(question) {
     answerButtonElement.appendChild(button)
     })
     
-    if (currentQuestionIndex !== questions.length -1){
-        currentQuestionIndex++
-    }
-    else if(currentQuestionIndex == questions.length){
-        alert("end of exam")
-    }
-
-    
-}
+    // if (currentQuestionIndex !== questions.length-1){
+    //     currentQuestionIndex++
+//     }
+// }
 function resetState(){
     while (answerButtonElement.firstChild){
         answerButtonElement.removeChild
@@ -105,17 +104,38 @@ function selectAnswer(event){
     } else {
         wrongPopup.classList.remove('hide')
         correctPopup.classList.add('hide')
+        sec = sec - 5 
     }
-    
-    showQuestion(questions[currentQuestionIndex]) 
+
+    console.log('currentQuestionIndex',currentQuestionIndex )
+    console.log('questions.length-1',questions.length-1 )
+
+
+    showQuestion(questions[currentQuestionIndex])
+
+
+
+    if (currentQuestionIndex === questions.length-1){
+        console.log(questions.length)
+        console.log(currentQuestionIndex)
+        endGame()
+    } else {
+            currentQuestionIndex++
+        showQuestion(questions[currentQuestionIndex])
+        // resetState();
+    }
+
     
     function resetState() {
         correctPopup.classList.add('hide')
-        wrongPopup.classList.add('hide')
-            
+        wrongPopup.classList.add('hide')   
     }
-    
+
+}}
+function endGame(){
+    alert("this is the end")
 }
+
 // function clearStatusClass(element)
 //     element.classList.remove('correct')
 //     element.classList.remove('wrong')
