@@ -35,30 +35,30 @@ function startTimer(){
 }
 const questions = [
     {
-     question: 'Did I pay taxes?',
+     question: 'Javascript is an ____ language?',
      answers: [
-         {text: 'yes', correct: false},
-         {text: 'a lot', correct: false},
-         {text: 'mystery is the spice of life', correct: true},
-         {text: 'we both did!', correct: false},
+         {text: 'Spanish', correct: false},
+         {text: 'French', correct: false},
+         {text: 'object-orientated', correct: true},
+         {text: 'Procedural', correct: false},
      ]
  },
  {
-    question: 'what is the weather?',
+    question: 'what keywords define a variable in JavaScript?',
     answers: [
-        {text: 'yes', correct: false},
-        {text: 'a lot', correct: false},
-        {text: 'mystery is the spice of life', correct: true},
-        {text: 'we both did!', correct: false},
+        {text: 'cookie', correct: false},
+        {text: 'monster', correct: false},
+        {text: 'var', correct: true},
+        {text: 'turtle', correct: false},
     ]
 },
 {
-    question: 'what is your favorite color?',
+    question: 'Which function is used to serialize an object into a JSON string in Javascript?',
     answers: [
-        {text: 'yes', correct: false},
-        {text: 'a lot', correct: false},
-        {text: 'mystery is the spice of life', correct: true},
-        {text: 'we both did!', correct: false},
+        {text: 'parse', correct: false},
+        {text: 'future', correct: false},
+        {text: 'stringify', correct: true},
+        {text: 'splendid', correct: false},
     ]
 }
  ]
